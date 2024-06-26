@@ -1,0 +1,535 @@
+https://leetcode.com/discuss/study-guide/2725900/Linked-list-study-guide
+
+
+1. Linked List traversal&Reverse Linked List
+
+This type of questions normally needs prev variable in order to remove certain nodes or reverse linked list
+
+	dummy = ListNode()
+    dummy.next = head
+	prev = dummy
+	while head:
+		if hashmap[head.val] > 1:
+			prev.next = head.next
+		else:
+			prev = head
+		head = head.next
+	return dummy.next
+	prev = None 
+	while head:
+		next = head.next
+		head.next = prev
+		prev = head
+		head = next
+	return prev
+1290. Convert Binary Number in a Linked List to Integer
+206. Reverse Linked List
+2046. Sort Linked List Already Sorted Using Absolute Values
+160. Intersection of Two Linked Lists
+1265. Print Immutable Linked List in Reverse
+2181. Merge Nodes in Between Zeros
+1669. Merge In Between Linked Lists
+92. Reverse Linked List II
+
+369. Plus One Linked List
+
+1.  find the rightmost not-nine digit
+2.  increase this rightmost not-nine digit by 1
+3.  set all the following nines to zeros
+445. Add Two Numbers II
+
+382. Linked List Random Node
+817. Linked List Components
+2058. Find the Minimum and Maximum Number of Nodes Between Critical Points
+19. Remove Nth Node From End of List
+61. Rotate List
+2487. Remove Nodes From Linked List
+725. Split Linked List in Parts
+
+2. Fast slow pointer
+
+fast_pointer = head
+slow_pointer = head
+while fast_pointer or fast_pointer.next:
+	fast_pointer = fast_pointer.next.next
+	slow_pointer = slow_pointer
+快慢指针主要用来找到链表的中间点， 如果链表的长度是奇数时，慢指针最终指向链表的中间点， 如果链表的长度是偶数时，慢指针最终指向第（n/2 + 1） 个点（例如链表长度是4，慢指针最终指向第三个点）
+判断链表是否有环也可以使用快慢指针。 如果有环， 则快指针与慢指针最终会相遇。
+2130. Maximum Twin Sum of a Linked List
+234. Palindrome Linked List
+
+876. Middle of the Linked List
+141. Linked List Cycle
+
+2095. Delete the Middle Node of a Linked List
+24. Swap Nodes in Pairs
+142. Linked List Cycle II
+
+3. Two pointers
+
+遇到two pointer 的题， 如果从前后双指针，可以先使用快慢指针确定中间节点， 然后翻转后半段链表。这样就可以前后同时进行遍历了
+143. Reorder List
+
+21. Merge Two Sorted Lists
+328. Odd Even Linked List
+1634. Add Two Polynomials Represented as Linked Lists
+86. Partition List
+2. Add Two Numbers
+
+4. design/ doubled linked list
+1472. Design Browser History
+641. Design Circular Deque
+
+5. Override value
+237. Delete Node in a Linked List
+1721. Swapping Nodes in a Linked List
+
+6. Monotonic stack
+1019. Next Greater Node In Linked List
+
+7. DFS/BFS
+426. Convert Binary Search Tree to Sorted Doubly Linked List
+114. Flatten Binary Tree to Linked List
+430. Flatten a Multilevel Doubly Linked List
+116. Populating Next Right Pointers in Each Node
+109. Convert Sorted List to Binary Search Tree
+117. Populating Next Right Pointers in Each Node II
+1367. Linked List in Binary Tree
+
+8. Design
+622. Design Circular Queue
+146. LRU Cache: OrderedDict and dict+linked list
+1670. Design Front Middle Back Queue
+379. Design Phone Directory
+355. Design Twitter
+707. Design Linked List
+
+9. Delete nodes
+203. Remove Linked List Elements
+83. Remove Duplicates from Sorted List
+1836. Remove Duplicates From an Unsorted Linked List
+82. Remove Duplicates from Sorted List II
+1474. Delete N Nodes After M Nodes of a Linked List
+
+10.Question needs to be practiced
+328. Odd Even Linked List
+
+11.Sorting
+147. Insertion Sort List
+
+12.Prefix Sum
+1171. Remove Zero Sum Consecutive Nodes from Linked List
+
+13.Tricks
+There are some tricks used in solving linked list questions
+
+When we would like to construct an integer from a string or linked list, we can always use this pattern. For example: 
+string = 'xxx'
+integer = 0
+for item in string:
+	integer = integer*base + item
+Here base can be 10 base, 2 base. 
+
+
+https://leetcode.com/discuss/study-guide/1800120/Become-Master-In-Linked-List
+
+
+
+
+Hello, my fellow programmer's today I'm going to teach you how you can become master's in LinkedList
+
+If you want to become master, then you have to follow some rules, only after that you can become Magician or called Master's in LinkedList
+Rules:
+
+Bring up your pen and a fresh new notebook where you have to write all of these thing's which I will teach you right now.
+If you had started learning linked list, then don't quit. Here's why, ask yourself this question when you feel about to quit, "If you had to leave, then why you had start?"
+Look back again at above 2 rule's
+Remember : Practice makes a men perfect
+
+													    #Introduction
+What is linked list ?
+
+Linked list is an linear data structure, which consists of a group of nodes in a sequence [OR] Linked list in which we store data in linear from!
+
+But, Array also stores data in linear form. Then what's the difference!
+
+In array we have to first define the size of the Array
+Let's say:-
+
+int arr[] = new int[8]
+Array :- [10, 20, 15, 18, 16, 10, 20, 16]
+And each bit has it's memory address, where 1 bit size = 4, therefore 8 bit = 8 * 4 = 32 bit.
+
+But linked list is dynamic, we don't have to define it's size.
+
+image
+
+In linked list we can add element as many as we want. But, in array size is fixed. So, to add new element we have to create a new array!
+
+image
+
+     Advantages                                              DisAdvantages
+
+1. Dynamic Nature                                   1. More memory usage due to address pointer
+2. Optimal insertion & deletion                     2. Slow traversal compared to arrays
+3. Stack's & queues can be easily implemented       3. No reverse traversal in singly linked list
+4. No memory wastage                                4. No random access
+Real-life Application's :-
+
+Previous - n - next page in browser
+Image Viewer
+Music Player
+											    #Type's of Linked list
+There are 4 type's of linked list, but in general we use 3 type's only:-
+
+Singly-linked list: linked list in which each node points to the next node and the last node points to null
+image
+
+Doubly-linked list: linked list in which each node has two pointers, p and n, such that p points to the previous node and n points to the next node; the last node's n pointer points to null
+image
+
+Circular-linked list: linked list in which each node points to the next node and the last node points back to the first node
+image
+
+Circular-Doubly-linked list:
+image
+
+Time Complexity:
+
+Access: O(n)
+Search: O(n)
+Insert: O(1)
+Remove: O(1)
+Let's see how to create a linked list
+
+Code :-
+image
+
+Therefore,
+image
+
+Output:-
+
+--------       --------       --------
+|  10  |  -->  |  20  |  -->  |  30  |
+--------       --------       --------
+Let's see how we traverse in linked list
+
+Code:-
+image
+
+Output:-
+
+--------       --------       --------
+|  10  |  -->  |  20  |  -->  |  30  |  -->  X
+--------       --------       --------
+curr^
+
+print:- 10
+
+**************************************************
+
+--------       --------       --------
+|  10  |  -->  |  20  |  -->  |  30  |  -->  X
+--------       --------       --------
+               curr^
+
+print:- 10, 20
+
+**************************************************
+
+--------       --------       --------
+|  10  |  -->  |  20  |  -->  |  30  |  -->  X
+--------       --------       --------
+                              curr^
+
+print:- 10, 20, 30
+
+
+**************************************************
+
+--------       --------       --------
+|  10  |  -->  |  20  |  -->  |  30  |  -->  X
+--------       --------       --------
+                                           curr^
+
+print & return answer :- 10, 20, 30
+Let's see how to insert an element[node] in linked list
+
+Code:-
+image
+
+Key Point :- Never miss your node reference! Otherwise, you will lose your linked list;
+
+Output:-
+
+Given :-
+--------       --------       --------        --------         --------
+|  5  |  -->   |  10  |  -->  |  5  |  -->    |  24  |  -->    |  40  |
+--------       --------       --------        --------         --------
+  
+Insert 30 at 3 index
+
+head˅
+--------       --------       --------                  --------         --------
+|  5  |  -->   |  10  |  -->  |  5  | --|       |-->    |  24  |  -->    |  40  |
+--------       --------       --------  |       |       --------         --------
+prev^                         prev^     ˅       |
+                                          --------
+                                          |  30  |
+										  --------
+										  toAdd^
+Let's delete an element[node] from linked list
+
+Code :-
+image
+
+Key point:- In java, if there is no reference to a node in linked list, garbage collector will take it off.
+
+Ouput :-
+
+Given :-
+--------       --------       --------        --------         --------
+|  5  |  -->   |  10  |  -->  | 15  |  -->    |  12  |  -->    |  14  |  -->    X
+--------       --------       --------        --------         --------
+
+delete 3rd element from linked list
+
+--------       --------       --------        --------         --------
+|  5  |  -->   |  10  |  -->  | 15  | |-X-    |  12   | |----> |  14  |  -->    X
+--------       --------       --------|       --------  |      --------
+                                      |-----------------|
+                                                       Best Question's to practice
+Problem list is in order from EASY to HARD in a sequence. And all question's are available on LeetCode!
+
+Reverse a Linked List
+Middle of the Linked List
+Delete Node in a Linked List
+Merge Two Sorted Linked List
+Remove duplicates from sorted list
+Intersection of two linked list
+Linked List Cycle
+Palindrome Linked List
+Swapping Nodes in a Linked List
+Odd Even Linked List
+Remove nth node from Linked List
+Add Two Numbers
+Swap Nodes in Pairs
+Split Linked List in Parts
+Insertion sort on Linked List
+Merge sort on Linked List
+Copy list with random pointers
+Remove zero sum from consecutive nodes from linked list
+Merge k sorted Linked List
+Reverse nodes in k group
+Doubly Linked List
+Adding a node at the front, at the end, after a node or before a node
+Deleting a node from the front, from the end, after a node or before a node
+Circular Doubly Linked List
+Adding a node at the front, at the end, after a node or before a node
+Deleting a node from the front, from the end, after a node or before a node
+LRU Cache
+LFU Cache
+I highly recommend you to solve these question's & few of them I will solve as well.
+
+206. Reverse Linked List
+
+Problem Statement :-
+Input: head = [1,2,3,4,5]
+Output: [5,4,3,2,1]
+
+Explanation :-
+We use 3 pointer's prev = previous, curr = current, forw = forward. Where prev will point to the previous pointer, curr will point to the current pointer & forw will point to the next pointer.
+
+Prev will hold the previous value becuase, if we break the link. So, we will not lose our linked list
+
+Similarly forw will point to the next pointer after curr. So, that once link is broken we will not lose our remaining linked list.
+
+Once curr reaches null our prev will be on our new head. So, we will return our prev as the answer.
+
+image
+
+Solution :-
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode forw = null;
+        
+        while(curr != null){
+            forw = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = forw;
+        }
+        return prev;
+    }
+}
+876. Middle of the Linked List
+
+Problem Statement :-
+Input: head = [1,2,3,4,5]
+Output: [3,4,5]
+
+Explanation:-
+We will create 2 pointer's fast & slow
+
+Fast pointer will move at the speed of 2X
+
+Slow pointer will move at the speed of 1X
+
+If fast pointer reaches null or fast.next is null we will return our slow pointer which mean's our slow pointer is pointing at mid of linked list
+
+image
+
+Solution:-
+
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        // Base Condition
+        if(head.next == null) return head;
+        
+        ListNode slow = head;
+        ListNode fast = head;
+        
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+}
+141. Linked List Cycle
+
+Problem Statement :-
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+
+Explanation:-
+
+We will create 2 pointer's fast & slow
+
+Fast pointer will move at the speed of 2X
+
+Slow pointer will move at the speed of 1X
+
+If fast pointer & slow pointer meet each other we will return true otherwise they there is no cycle we will return false!!
+
+image
+
+Solution:-
+
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        
+        ListNode fast = head;
+        ListNode slow = head;
+        
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+            
+            if(fast == slow) return true;
+        }
+        return false;
+    }
+}
+234. Palindrome Linked List
+
+Problem Statement :-
+Input: head = [1,2,2,1]
+Output: true
+
+Explanation:-
+
+First we will get the mid so, that we can divide a linked list into two.
+After that, we will reverse the half of the linked list
+Then we have our slow pointer on new head & we will compare the value with old head i.e. head
+We will check these value & move both the pointer's slow & head until slow reaches null.
+If slow reaches null we will return true, otherwise false.
+image
+
+image
+
+image
+
+Solution:-
+
+class Solution {
+    public ListNode reverse(ListNode head){
+        
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode forw = null;
+        
+        while(curr != null){
+            forw = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = forw;
+        }
+        return prev;
+    }
+    public boolean isPalindrome(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+        
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        slow= reverse(slow);
+        while(slow != null && (slow.val == head.val)){
+            head = head.next;
+            slow = slow.next;
+        }
+        return slow == null;
+    }
+}
+160. Intersection of Two Linked Lists
+
+Problem Statement :-
+Input: intersectVal = 8, listA = [4,1,8,4,5], listB = [5,6,1,8,4,5], skipA = 2, skipB = 3
+Output: Intersected at '8'
+
+Explanation:-
+So, what we doing is
+
+Take 2 pointer's: pointer A walks through List A and List B (since once it hits null, it goes to List B's head).
+
+Pointer B also walks through List B and List A.
+
+Regardless of the length of the two lists, the sum of the lengths are the same (i.e. a+b = b+a), which means that the pointers sync up at the point of intersection.
+
+If the lists never intersected, it's fine too, because they'll sync up at the end of each list, both of which are null.
+
+image
+
+image
+
+Notice that if list A and list B have the same length, this solution will terminate in no more than 1 traversal; if both lists have different lengths, 
+this solution will terminate in no more than 2 traversals -- in the second traversal, swapping a and b synchronizes a and b before the end of the
+second traversal. 
+By synchronizing a and b I mean both have the same remaining steps in the second traversal so that it's guaranteed for them to reach the 
+first intersection node, or reach null at the same time (technically speaking, in the same iteration) 
+-- see Case 2 (Have Intersection & Different Len) and Case 4 (Have No Intersection & Different Len).
+
+PS: There are many great explanations of this solution for various cases, I believe to visualize it can resolve most of your doubts!
+Solution:-
+
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        ListNode a = headA;
+        ListNode b = headB;
+        
+        while(a != b){
+            a = a == null ? headB : a.next;
+            b = b == null ? headA : b.next;
+        }
+        return b;
+    }
+}
+Alright, guy's I hope you like my work! If do, then stay tuned. Because i'll post few more solution's**
+
+imageimage
